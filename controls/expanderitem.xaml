@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ResourceDictionary x:Class="OpenFrp.Launcher.Controls.Apps" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:OpenFrp.Launcher.Controls" xmlns:sys="clr-namespace:System;assembly=mscorlib" xmlns:ui="http://schemas.modernwpf.com/2019">
+  <sys:Double x:Key="ItemMinHeight">65</sys:Double>
+  <Style x:Key="DefualtExpanderItemStyle" TargetType="{x:Type local:ExpanderItem}">
+    <Setter Property="Background" Value="{DynamicResource ExpanderHeaderBackground}" />
+    <Setter Property="MinWidth" Value="{DynamicResource FlyoutThemeMinWidth}" />
+    <Setter Property="MinHeight" Value="{DynamicResource ItemMinHeight}" />
+    <Setter Property="BorderThickness" Value="{DynamicResource ExpanderHeaderBorderThickness}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource ExpanderHeaderBorderBrush}" />
+    <Setter Property="HorizontalAlignment" Value="Left" />
+    <Setter Property="ui:ControlHelper.CornerRadius" Value="{DynamicResource ControlCornerRadius}" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate>
+          <Border Background="{Binding Background, RelativeSource={RelativeSource Mode=TemplatedParent}}" BorderBrush="{Binding BorderBrush, RelativeSource={RelativeSource Mode=TemplatedParent}}" BorderThickness="{Binding BorderThickness, RelativeSource={RelativeSource Mode=TemplatedParent}}" CornerRadius="{Binding (ui:ControlHelper.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}}">
+            <Grid>
+              <Border Name="PR_bg" Background="{DynamicResource SystemControlBackgroundBaseLowBrush}" CornerRadius="{Binding (ui:ControlHelper.CornerRadius), RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+              <ContentPresenter VerticalAlignment="Center" Content="{Binding Content, RelativeSource={RelativeSource Mode=TemplatedParent}}" />
+            </Grid>
+          </Border>
+          <FrameworkTemplate.Resources>
+            <ResourceDictionary>
+              <QuarticEase x:Key="EaseFunction" EasingMode="EaseOut" />
+              <Duration x:Key="UTime">0:0:0.15</Duration>
+              <Storyboard x:Key="Animation_toDefualt">
+                <DoubleAnimation Storyboard.TargetName="PR_bg" Storyboard.TargetProperty="Opacity" To="0" EasingFunction="{StaticResource EaseFunction}" Duration="{StaticResource UTime}" />
+              </Storyboard>
+              <Storyboard x:Key="Animation_toHover">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PR_bg" To="0.075" EasingFunction="{StaticResource EaseFunction}" Duration="{StaticResource UTime}" />
+              </Storyboard>
+              <Storyboard x:Key="Animation_toActive">
+                <DoubleAnimation Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PR_bg" To="0.15" EasingFunction="{StaticResource EaseFunction}" Duration="{StaticResource UTime}" />
+              </Storyboard>
+            </ResourceDictionary>
+          </FrameworkTemplate.Resources>
+          <ControlTemplate.Triggers>
+            <Trigger Property="local:ExpanderItem.Pressable" Value="False">
+              <Setter TargetName="PR_bg" Property="Visibility" Value="Hidden" />
+            </Trigger>
+            <Trigger Property="local:ExpanderItem.Pressable" Value="True">
+              <Setter TargetName="PR_bg" Property="UIElement.Opacity" Value="0" />
+            </Trigger>
+            <EventTrigger RoutedEvent="PreviewMouseMove">
+              <BeginStoryboard Storyboard="{StaticResource Animation_toHover}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseLeftButtonDown">
+              <BeginStoryboard Storyboard="{StaticResource Animation_toActive}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="PreviewMouseLeftButtonUp">
+              <BeginStoryboard Storyboard="{StaticResource Animation_toHover}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseLeave">
+              <BeginStoryboard Storyboard="{StaticResource Animation_toDefualt}" />
+            </EventTrigger>
+            <EventTrigger RoutedEvent="LostFocus">
+              <BeginStoryboard Storyboard="{StaticResource Animation_toDefualt}" />
+            </EventTrigger>
+          </ControlTemplate.Triggers>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style x:Key="{x:Type local:ExpanderItem}" BasedOn="{StaticResource DefualtExpanderItemStyle}" TargetType="{x:Type local:ExpanderItem}" />
+</ResourceDictionary>

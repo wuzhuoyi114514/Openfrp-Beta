@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ui:Page x:Class="OpenFrp.Launcher.Pages.Home" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:cv="clr-namespace:OpenFrp.Launcher.Converter" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:OpenFrp.Launcher.Pages" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ui="http://schemas.modernwpf.com/2019" xmlns:uip="http://schemas.modernwpf.com/toolkit/controls" Title="Home" Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}" Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}">
+  <FrameworkElement.Resources>
+    <ResourceDictionary>
+      <cv:LessConverter x:Key="LessConverter" />
+    </ResourceDictionary>
+  </FrameworkElement.Resources>
+  <Grid Name="_wdWda4adw" Margin="0,42,38,42">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid Row="0">
+      <TextBlock Margin="42,0,0,0" Style="{StaticResource TitleTextBlockStyle}" Text="首页" />
+    </Grid>
+    <Grid Name="_awdawdk_Main_Scroll_rot" Row="1">
+      <ui:ScrollViewerEx Name="_awdawdk_Main_Scroll">
+        <ui:SimpleStackPanel Margin="38,0,38,0" Spacing="12">
+          <ui:SimpleStackPanel MaxWidth="1100" Spacing="16">
+            <Grid VerticalAlignment="Top" SizeChanged="Main_Grid_SizeChanged">
+              <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+              </Grid.RowDefinitions>
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Grid Name="Main_News_1" Row="0" Column="0">
+                <FrameworkElement.Style>
+                  <Style TargetType="{x:Type Grid}">
+                    <Setter Property="ColumnSpan" Value="1" />
+                    <Setter Property="Margin" Value="0,0,8,0" />
+                    <Setter Property="UIElement.Effect" Value="{x:Null}" />
+                    <Style.Triggers>
+                      <DataTrigger Value="True" Binding="{Binding ActualWidth, Converter={StaticResource LessConverter}, ConverterParameter=900, ElementName=_wdWda4adw}">
+                        <Setter Property="ColumnSpan" Value="2" />
+                        <Setter Property="Margin" Value="0,0,0,8" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </FrameworkElement.Style>
+                <Border>
+                  <Border BorderBrush="{DynamicResource ControlElevationBorderBrush}" BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                    <Border.Background>
+                      <ImageBrush ImageSource="pack://application:,,,/OpenFrp.Launcher;component/wallhaven-72jz3o_1920x1080.png" Stretch="UniformToFill" />
+                    </Border.Background>
+                  </Border>
+                </Border>
+                <Grid>
+                  <Border CornerRadius="0,0,4,4">
+                    <Border.Background>
+                      <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                        <GradientStop Offset="1" Color="#8F000000" />
+                        <GradientStop Offset="0" Color="Transparent" />
+                      </LinearGradientBrush>
+                    </Border.Background>
+                  </Border>
+                  <Grid Margin="36" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                    <TextBlock FontSize="28" Foreground="#FFFFFFFF" TextTrimming="CharacterEllipsis">
+                      <Run Text="服了,有修不完的BUG" />
+                      <LineBreak />
+                      <Run FontSize="20" Text="田家秋作苦，邻女夜舂寒" />
+                    </TextBlock>
+                  </Grid>
+                </Grid>
+              </Grid>
+              <Grid>
+                <Border BorderBrush="{DynamicResource ControlElevationBorderBrush}" BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                  <Grid Margin="20,24,20,24">
+                    <Grid Name="Main_UserInfo">
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                      </Grid.RowDefinitions>
+                      <TextBlock Grid.Row="0" Style="{StaticResource SubtitleTextBlockStyle}" Text="个人信息" />
+                      <ui:ScrollViewerEx Grid.Row="1" Margin="-4,16,0,8" PanningMode="Both">
+                        <ui:ListView Name="_035addwiuahdui_UserInfo_List" Margin="4,0,0,0" PreviewMouseWheel="Main_ListView_PreviewMouseWheel" />
+                      </ui:ScrollViewerEx>
+                      <ui:SimpleStackPanel Grid.Row="2">
+                        <ui:CommandBar HorizontalAlignment="Left">
+                          <ui:AppBarButton Icon="Calendar" Label="签到" Click="UserC_AppBarButton_Click" />
+                          <ui:AppBarButton Icon="Globe" Label="官网" Click="UserC_AppBarButton_Click_1" />
+                        </ui:CommandBar>
+                      </ui:SimpleStackPanel>
+                    </Grid>
+                    <Grid Name="Main_UserInfo_Loading" Visibility="Hidden">
+                      <ui:ProgressRing Width="100" Height="100" />
+                    </Grid>
+                  </Grid>
+                </Border>
+                <FrameworkElement.Style>
+                  <Style TargetType="{x:Type Grid}">
+                    <Setter Property="Row" Value="0" />
+                    <Setter Property="Column" Value="1" />
+                    <Style.Triggers>
+                      <DataTrigger Value="True" Binding="{Binding ActualWidth, Converter={StaticResource LessConverter}, ConverterParameter=900, ElementName=_wdWda4adw}">
+                        <Setter Property="Row" Value="1" />
+                        <Setter Property="ColumnSpan" Value="2" />
+                        <Setter Property="Column" Value="0" />
+                        <Setter Property="Height" Value="350" />
+                      </DataTrigger>
+                    </Style.Triggers>
+                  </Style>
+                </FrameworkElement.Style>
+              </Grid>
+            </Grid>
+            <Grid Height="425">
+              <Border BorderBrush="{DynamicResource ControlElevationBorderBrush}" BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                <Grid Margin="22,24,22,24">
+                  <Grid Name="Main_Markdown">
+                    <Grid.RowDefinitions>
+                      <RowDefinition Height="Auto" />
+                      <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Margin="4,0,0,0" Style="{StaticResource SubtitleTextBlockStyle}" Text="公告" />
+                    <ui:ScrollViewerEx Grid.Row="1" Margin="0,12,0,0" PanningMode="Both">
+                      <uip:MarkdownTextBlock Name="Main_Markdown_content" Grid.Row="1" Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" Header1Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" Header2Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" Header3Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" Header4Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" Header5Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" Header6Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" LinkClicked="Main_Markdown_content_LinkClicked" PreviewMouseWheel="Main_Markdown_content_PreviewMouseWheel" />
+                    </ui:ScrollViewerEx>
+                  </Grid>
+                  <Grid Name="Main_Markdown_Loading" Visibility="Hidden">
+                    <ui:ProgressRing Width="100" Height="100" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                  </Grid>
+                </Grid>
+              </Border>
+            </Grid>
+            <Grid Height="425">
+              <Border BorderBrush="{DynamicResource ControlElevationBorderBrush}" BorderThickness="{DynamicResource ExpanderHeaderBorderThickness}" CornerRadius="{DynamicResource ControlCornerRadius}">
+                <Grid Margin="22,24,22,24">
+                  <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                  </Grid.RowDefinitions>
+                  <TextBlock Margin="4,0,0,0" Style="{StaticResource SubtitleTextBlockStyle}" Text="服务器状态" />
+                  <Grid Row="1">
+                    <Grid Margin="0,12,0,0">
+                      <ui:ListView Name="_app_serverStats_listview" />
+                    </Grid>
+                    <Grid>
+                      <ui:ProgressRing Name="_app_serverStats_Progress" Width="90" Height="90" />
+                    </Grid>
+                  </Grid>
+                </Grid>
+              </Border>
+            </Grid>
+          </ui:SimpleStackPanel>
+        </ui:SimpleStackPanel>
+      </ui:ScrollViewerEx>
+    </Grid>
+  </Grid>
+</ui:Page>

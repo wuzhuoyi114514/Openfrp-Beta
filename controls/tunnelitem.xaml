@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UserControl x:Class="OpenFrp.Launcher.Controls.TunnelItem" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:OpenFrp.Launcher.Controls" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ui="http://schemas.modernwpf.com/2019" Width="420" Height="250">
+  <Grid Margin="28">
+    <ui:SimpleStackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+      <TextBlock Name="Ctrl_Title" Style="{StaticResource SubtitleTextBlockStyle}" Text="隧道名称" />
+      <TextBlock Name="Ctrl_Subtitle" Style="{StaticResource BodyTextBlockStyle}">
+        <Run Text="副标题" />
+        <LineBreak />
+        <Run Text="副标题" />
+      </TextBlock>
+    </ui:SimpleStackPanel>
+    <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom">
+      <ui:CommandBar>
+        <ui:AppBarButton Icon="Copy" Label="复制链接" Click="AppBarButton_Click_1" />
+        <ui:AppBarButton Icon="AlignLeft" Label="操控台" Click="AppBarButton_Click_2" />
+        <ui:AppBarButton Icon="Edit" Label="编辑" Click="AppBarButton_Click_3" />
+      </ui:CommandBar>
+    </Grid>
+    <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+      <ui:ToggleSwitch Name="Card_ToggleSwitch" FocusVisualMargin="-36,-4,0,-4" Style="{StaticResource LeftLabelToggleSwitchStyle}" Toggled="ToggleSwitch_Toggled" />
+    </Grid>
+  </Grid>
+</UserControl>

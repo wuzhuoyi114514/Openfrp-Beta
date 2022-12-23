@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ui:Page x:Class="OpenFrp.Launcher.Pages.Setting" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:local="clr-namespace:OpenFrp.Launcher.Controls" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:ui="http://schemas.modernwpf.com/2019" Title="Setting" Background="{DynamicResource SystemControlPageBackgroundAltHighBrush}" Foreground="{DynamicResource SystemControlPageTextBaseHighBrush}" xmlns:pages="clr-namespace:OpenFrp.Launcher.Pages">
+  <Grid Margin="38,42,38,42">
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+      <RowDefinition Height="*" />
+    </Grid.RowDefinitions>
+    <Grid Row="0">
+      <TextBlock Margin="4,0,0,0" Style="{StaticResource TitleTextBlockStyle}" Text="设置" />
+    </Grid>
+    <Grid Row="1">
+      <ui:ScrollViewerEx Name="MainScroll" PanningMode="Both">
+        <ui:SimpleStackPanel Margin="4,4,4,0" Spacing="8">
+          <local:ExpanderItem MaxWidth="1300" Focusable="False" Pressable="False" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=FrameworkElement}}">
+            <Grid Height="{DynamicResource ItemMinHeight}" Margin="16,0,16,0">
+              <ui:SimpleStackPanel Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <ui:FontIcon FontSize="22" Glyph="" />
+                <TextBlock Margin="0,2,0,0">
+                  <Run Text="主题色" />
+                  <LineBreak />
+                  <Run Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" Text="更改应用主题模式" />
+                </TextBlock>
+              </ui:SimpleStackPanel>
+              <ui:SimpleStackPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+                <ComboBox Width="200" Loaded="Appearance_ComboBox_Loaded">
+                  <ComboBoxItem Content="系统默认" />
+                  <ComboBoxItem Content="浅色模式" />
+                  <ComboBoxItem Content="深色模式" />
+                </ComboBox>
+              </ui:SimpleStackPanel>
+            </Grid>
+          </local:ExpanderItem>
+          <local:ExpanderItem MaxWidth="1300" Focusable="False" Pressable="False" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=FrameworkElement}}">
+            <Grid Height="{DynamicResource ItemMinHeight}" Margin="16,0,16,0">
+              <ui:SimpleStackPanel Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <ui:SymbolIcon FontSize="22" Symbol="Contact" />
+                <TextBlock Margin="0,2,0,0">
+                  <Run Text="OpenFrp 用户" />
+                  <LineBreak />
+                  <Run Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" Text="登录后,个人信息请在首页查看" />
+                </TextBlock>
+              </ui:SimpleStackPanel>
+              <ui:SimpleStackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Spacing="8">
+                <Button Content="  登录  " Style="{StaticResource AccentButtonStyle}" Loaded="UserLogin_Button_Loaded" />
+              </ui:SimpleStackPanel>
+            </Grid>
+          </local:ExpanderItem>
+          <local:ExpanderItem MaxWidth="1300" Focusable="False" Pressable="False" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=FrameworkElement}}">
+            <Grid Height="{DynamicResource ItemMinHeight}" Margin="16,0,16,0">
+              <ui:SimpleStackPanel Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <ui:FontIcon FontSize="22" Glyph="" />
+                <TextBlock Margin="0,2,0,0">
+                  <Run Text="显示Toast通知" />
+                  <LineBreak />
+                  <Run Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" Text="在开启隧道后,您可以快速获取链接。(Win10+)" />
+                </TextBlock>
+              </ui:SimpleStackPanel>
+              <ui:SimpleStackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Spacing="8">
+                <ui:ToggleSwitch FocusVisualMargin="-36,-4,0,-4" Style="{StaticResource LeftLabelToggleSwitchStyle}" Loaded="Notifly_ToggleSwitch_Loaded" />
+              </ui:SimpleStackPanel>
+            </Grid>
+          </local:ExpanderItem>
+          <local:ExpanderItem MaxWidth="1300" Focusable="False" Pressable="False" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=FrameworkElement}}">
+            <Grid Height="{DynamicResource ItemMinHeight}" Margin="16,0,16,0">
+              <ui:SimpleStackPanel Margin="0,2,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <ui:FontIcon FontSize="22" Glyph="" />
+                <TextBlock Margin="0,2,0,0">
+                  <Run Text="开机自启动" />
+                  <LineBreak />
+                  <Run Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" Text="开机自启动 (RDP请备用一款远程软件)" />
+                </TextBlock>
+              </ui:SimpleStackPanel>
+              <ui:SimpleStackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Orientation="Horizontal" Spacing="8">
+                <Grid Width="90">
+                  <CheckBox HorizontalAlignment="Left" Content="系统服务" IsEnabled="False" />
+                </Grid>
+                <ui:ToggleSwitch FocusVisualMargin="-36,-4,0,-4" Style="{StaticResource LeftLabelToggleSwitchStyle}" Loaded="Mode_ToggleSwitch_Loaded" />
+              </ui:SimpleStackPanel>
+            </Grid>
+          </local:ExpanderItem>
+          <local:Expander MaxWidth="1300" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=FrameworkElement}}">
+            <HeaderedContentControl.Header>
+              <ui:SimpleStackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <ui:FontIcon FontSize="22" Glyph="" />
+                <TextBlock Margin="0,2,0,0">
+                  <Run Text="操控台" />
+                  <LineBreak />
+                  <Run FontSize="12" Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" Text="调整字体(大小)" />
+                </TextBlock>
+              </ui:SimpleStackPanel>
+            </HeaderedContentControl.Header>
+            <Grid Height="500">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" MinHeight="250" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <ui:ScrollViewerEx Grid.Column="0" ControlHelper.CornerRadius="{DynamicResource ControlCornerRadius}" Background="#FF000000" HorizontalScrollBarVisibility="Auto" PanningMode="Both" PreviewMouseWheel="Console_ScrollViewerEx_PreviewMouseWheel">
+                <TextBlock Name="Console_Preview" Margin="16" Foreground="#FFFFFFFF" Text="2022-01-01 00:00:00 [Main.cs] Message Output" />
+              </ui:ScrollViewerEx>
+              <Grid Row="1" Height="130" Margin="0,8,0,0">
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="250" />
+                  <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <ui:SimpleStackPanel Grid.Column="0" Spacing="8">
+                  <ui:NumberBox ControlHelper.Header="字号" Maximum="128" Minimum="1" SpinButtonPlacementMode="Inline" Text="{Binding FontSize, ElementName=Console_Preview}" Initialized="Console_NumberBox_Initialized" />
+                  <ComboBox ControlHelper.Header="字体" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=ui:SimpleStackPanel}}" SelectedValue="{Binding FontFamily, ElementName=Console_Preview}" Initialized="Console_ComboBox_Initialized" />
+                </ui:SimpleStackPanel>
+              </Grid>
+            </Grid>
+          </local:Expander>
+          <local:Expander MaxWidth="1300" Width="{Binding ActualWidth, RelativeSource={RelativeSource Mode=FindAncestor, AncestorLevel=1, AncestorType=FrameworkElement}}">
+            <HeaderedContentControl.Header>
+              <ui:SimpleStackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal" Spacing="10">
+                <ui:FontIcon FontSize="22" Glyph="" />
+                <TextBlock Margin="0,2,0,0">
+                  <Run Text="关于" />
+                  <LineBreak />
+                  <Run FontSize="12" Foreground="{DynamicResource SystemControlForegroundBaseMediumBrush}" Text="OpenFrp Beta" />
+                </TextBlock>
+              </ui:SimpleStackPanel>
+            </HeaderedContentControl.Header>
+            <Grid Height="325" Margin="8,8,0,0">
+              <ui:SimpleStackPanel Spacing="16">
+                <TextBlock FontSize="14" TextWrapping="WrapWithOverflow">
+                  <Run FontSize="18" Text="OpenFrp Launcher Beta" />
+                  <LineBreak />
+                  <Run FontSize="14" Text="Version 2022 Beta 1.0.3" />
+                  <LineBreak />
+                  <Run FontSize="14" Text="如果您发现了BUG，我们Openfrp Project团队愿意采纳。" />
+                  <LineBreak />
+                  <Run FontSize="14" Text="(注: API为公共项目 请不要尝试反编译、修改、破解此软件或分发如上类型的Openfrp Launcher。)" />
+                  <LineBreak />
+                  <Hyperlink NavigateUri="https://afdian.net/@zgitnetwork">官方赞助</Hyperlink>
+                  <LineBreak />
+                  <LineBreak />
+                  <Run FontSize="18" Text="开源软件使用列表:" />
+                </TextBlock>
+                <ui:ListView Margin="0,-8,0,0">
+                  <ui:ListViewItem Content="ModernWpf (wherewhere)" />
+                  <ui:ListViewItem Content="ModernWpf.Toolkit" />
+                  <ui:ListViewItem Content="Hardcodet.NotifyIcon.Wpf" />
+                  <ui:ListViewItem Content="Newtonsoft.Json" />
+                </ui:ListView>
+              </ui:SimpleStackPanel>
+            </Grid>
+          </local:Expander>
+        </ui:SimpleStackPanel>
+      </ui:ScrollViewerEx>
+    </Grid>
+  </Grid>
+</ui:Page>
