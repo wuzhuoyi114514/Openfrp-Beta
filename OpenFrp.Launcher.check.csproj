@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>OpenFrp.Launcher</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWPF>True</UseWPF>
+    <TargetFramework>net462</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>Preview</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <RootNamespace />
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="wallhaven-72jz3o_1920x1080.png" />
+    <None Remove="openfrp.png" />
+    <EmbeddedResource Include="wallhaven-72jz3o_1920x1080.png" />
+    <EmbeddedResource Include="openfrp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="WindowsBase" />
+    <Reference Include="ModernWpf.Controls">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\ModernWpf.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenFrp.Service">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\OpenFrp.Service.exe</HintPath>
+    </Reference>
+    <Reference Include="ModernWpf">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\ModernWpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Toolkit.Uwp.Notifications">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\Microsoft.Toolkit.Uwp.Notifications.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="Hardcodet.NotifyIcon.Wpf">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\Hardcodet.NotifyIcon.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernWpf.Toolkit.UI.Controls.Markdown">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\ModernWpf.Toolkit.UI.Controls.Markdown.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\PCL2破解教程中需要的东西\DnSpy\DnSpy\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+  </ItemGroup>
+</Project>
